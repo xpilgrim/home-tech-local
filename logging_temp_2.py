@@ -25,7 +25,7 @@ def lies_temp(pfad):
             m = re.match(r"([0-9a-f]{2} ){9}t=([+-]?[0-9]+)", zeile)
             if m:
                 #temp = float(m.group(2)) / 1000
-                temp = float(m.group(2))
+                temp = m.group(2)
                 datei.close()
                 print temp
     except IOError:
