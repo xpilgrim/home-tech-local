@@ -4,6 +4,7 @@
 # https://github.com/GolemMediaGmbH/OfficeTemperature/blob/master/Raspberry_Pi/Raspberry.py
 
 import re, urllib2
+import requests
 import RPi.GPIO as GPIO
 import config
 
@@ -35,11 +36,14 @@ def lies_temp(pfad):
 
 def send_temp(temp):
     send_url = url % temp
-    try:
-        result = urllib2.urlopen(send_url);
-        print result
-    except urllib2.HTTPError as error:
-        print error.code, error.reason
+
+    res = requests.get(send_url, auth=(config.logging_user, config.logging_pw))
+    print res
+    #try:
+    #    result = urllib2.urlopen(send_url);
+    #    print result
+    #except urllib2.HTTPError as error:
+    #    print error.code, error.reason
 
 if __name__ == '__main__':
     GPIO.setwarnings(False)
