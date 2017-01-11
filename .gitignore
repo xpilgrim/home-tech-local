@@ -1,0 +1,6 @@
+scripts_home-tech/db_conf.inc.php
+.htaccess
+.gitignore~
+*.php~
+*.bfproject
+*.template~
