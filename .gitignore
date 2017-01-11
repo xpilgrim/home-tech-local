@@ -1,4 +1,5 @@
 scripts_home-tech/db_conf.inc.php
+config.py
 .htaccess
 .gitignore~
 *.php~
