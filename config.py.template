@@ -1,0 +1,7 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# common config options for home-tech logging
+
+# url for logging
+logging_url = ""
