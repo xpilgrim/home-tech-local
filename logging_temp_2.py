@@ -37,7 +37,7 @@ def read_last_temp(conf_sensor_nr):
     payload = {'action': 'load_temp', 'pa': conf_sensor_nr}
     try:
         res = requests.get(
-            config.logging_url, params=payload,
+            config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
         print res.text
     except requests.exceptions.RequestException as e:
