@@ -70,3 +70,5 @@ if __name__ == '__main__':
         # send only if different value
         if temp_old.strip() != temp[:2]:
             send_temp(conf_sensor_nr, temp)
+        else:
+            print "Nothing to do, temp hasn't changed"
