@@ -5,3 +5,7 @@
 
 # url for logging
 logging_url = ""
+# authentication
+logging_user = ""
+logging_pw = ""
+
