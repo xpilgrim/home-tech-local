@@ -34,6 +34,7 @@ def read_temp(pfad):
 
 
 def read_last_temp(conf_sensor_nr):
+    last_temp = None
     payload = {'action': 'load_temp', 'pa': conf_sensor_nr}
     try:
         res = requests.get(
@@ -42,6 +43,7 @@ def read_last_temp(conf_sensor_nr):
         print res.text
     except requests.exceptions.RequestException as e:
         print e
+    return last_temp
 
 
 def send_temp(conf_sensor_nr, temp):
