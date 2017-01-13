@@ -3,8 +3,9 @@
 
 # common config options for home-tech logging
 
-# url for logging
+# urls
 logging_url = ""
+logged_url = ""
 # authentication
 logging_user = ""
 logging_pw = ""
