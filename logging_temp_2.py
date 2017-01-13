@@ -61,5 +61,6 @@ if __name__ == '__main__':
     temp = read_temp(conf_sensor_pfad)
 
     if None != temp:
-        read_last_temp(conf_sensor_nr)
+        temp_old = read_last_temp(conf_sensor_nr)
+        print temp_old
         send_temp(conf_sensor_nr, temp)
