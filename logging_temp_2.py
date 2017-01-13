@@ -33,7 +33,7 @@ def read_temp(pfad):
 
 
 def send_temp(temp):
-    payload = {'action': 'x', 'pa': 'add_temp', 'pb': '2', 'pc': temp}
+    payload = {'action': 'add_temp', 'pa': 'add_temp', 'pb': '2', 'pc': temp}
     res = requests.get(
         config.logging_url, params=payload,
         auth=(config.logging_user, config.logging_pw))
