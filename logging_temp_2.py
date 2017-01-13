@@ -12,7 +12,7 @@ import config
 conf_sensor_nr = 2
 # Die Sensor-ID laut /sys/bus/w1/devices
 conf_sensor_id = "28-000007520a0a"
-sensorpfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
+conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
 
 
 def read_temp(pfad):
@@ -39,7 +39,7 @@ def read_last_temp(conf_sensor_nr):
         res = requests.get(
             config.logging_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
-        print res
+        print res.text
     except requests.exceptions.RequestException as e:
         print e
 
@@ -58,7 +58,7 @@ def send_temp(conf_sensor_nr, temp):
 if __name__ == '__main__':
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    temp = read_temp(sensorpfad)
+    temp = read_temp(conf_sensor_pfad)
 
     if None != temp:
         read_last_temp(conf_sensor_nr)
