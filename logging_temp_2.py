@@ -3,6 +3,7 @@
 # Thanx to:
 # https://github.com/GolemMediaGmbH/OfficeTemperature/blob/master/Raspberry_Pi/Raspberry.py
 
+import re
 import requests
 import RPi.GPIO as GPIO
 import config
