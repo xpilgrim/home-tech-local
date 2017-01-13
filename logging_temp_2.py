@@ -34,7 +34,7 @@ def read_temp(pfad):
 
 
 def read_last_temp(conf_sensor_nr):
-    payload = {'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': temp}
+    payload = {'action': 'load_temp', 'pa': conf_sensor_nr}
     try:
         res = requests.get(
             config.logging_url, params=payload,
@@ -61,4 +61,5 @@ if __name__ == '__main__':
     temp = read_temp(sensorpfad)
 
     if None != temp:
+        read_last_temp(conf_sensor_nr)
         send_temp(conf_sensor_nr, temp)
