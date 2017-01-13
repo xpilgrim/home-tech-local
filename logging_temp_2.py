@@ -35,16 +35,14 @@ def read_temp(pfad):
 
 def send_temp(conf_sensor_nr, temp):
     payload = {'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': temp}
-    res = requests.get(
-        config.logging_url, params=payload,
-        auth=(config.logging_user, config.logging_pw))
+    try:
+        res = requests.get(
+            config.logging_url, params=payload,
+            auth=(config.logging_user, config.logging_pw))
+        print res
+    except requests.exceptions.RequestException as e:
+        print e
 
-    print res
-    #try:
-    #    result = urllib2.urlopen(send_url);
-    #    print result
-    #except urllib2.HTTPError as error:
-    #    print error.code, error.reason
 
 if __name__ == '__main__':
     GPIO.setwarnings(False)
