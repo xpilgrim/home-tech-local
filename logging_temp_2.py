@@ -11,8 +11,8 @@ import config
 # config
 conf_sensor_nr = 2
 # Die Sensor-ID laut /sys/bus/w1/devices
-sensorid = "28-000007520a0a"
-sensorpfad = "/sys/bus/w1/devices/%s/w1_slave" % sensorid
+conf_sensor_id = "28-000007520a0a"
+sensorpfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
 
 
 def read_temp(pfad):
@@ -31,6 +31,17 @@ def read_temp(pfad):
     except IOError:
         print "Konnte Sensor nicht lesen"
     return temp
+
+
+def read_last_temp(conf_sensor_nr):
+    payload = {'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': temp}
+    try:
+        res = requests.get(
+            config.logging_url, params=payload,
+            auth=(config.logging_user, config.logging_pw))
+        print res
+    except requests.exceptions.RequestException as e:
+        print e
 
 
 def send_temp(conf_sensor_nr, temp):
