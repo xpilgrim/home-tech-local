@@ -67,4 +67,6 @@ if __name__ == '__main__':
         temp_old = read_last_temp(conf_sensor_nr)
         print temp_old.strip()
         print temp[:2]
-        send_temp(conf_sensor_nr, temp)
+        # send only if different value
+        if temp_old.strip() != temp[:2]:
+            send_temp(conf_sensor_nr, temp)
