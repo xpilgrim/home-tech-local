@@ -3,7 +3,6 @@
 # Thanx to:
 # https://github.com/GolemMediaGmbH/OfficeTemperature/blob/master/Raspberry_Pi/Raspberry.py
 
-import re, urllib2
 import requests
 import RPi.GPIO as GPIO
 import config
@@ -14,7 +13,7 @@ sensorid = "28-000007520a0a"
 sensorpfad = "/sys/bus/w1/devices/%s/w1_slave" % sensorid
 
 
-def lies_temp(pfad):
+def read_temp(pfad):
     temp = None
     try:
         datei = open(pfad, "r")
@@ -48,7 +47,7 @@ def send_temp(temp):
 if __name__ == '__main__':
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
-    temp = lies_temp(sensorpfad)
+    temp = read_temp(sensorpfad)
 
     if None != temp:
         send_temp(temp)
