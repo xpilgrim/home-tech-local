@@ -65,5 +65,5 @@ if __name__ == '__main__':
 
     if None != temp:
         temp_old = read_last_temp(conf_sensor_nr)
-        print temp_old
+        print trim(temp_old)
         send_temp(conf_sensor_nr, temp)
