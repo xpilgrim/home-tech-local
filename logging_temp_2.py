@@ -9,6 +9,7 @@ import RPi.GPIO as GPIO
 import config
 
 # config
+conf_sensor_nr = 2
 # Die Sensor-ID laut /sys/bus/w1/devices
 sensorid = "28-000007520a0a"
 sensorpfad = "/sys/bus/w1/devices/%s/w1_slave" % sensorid
@@ -32,8 +33,9 @@ def read_temp(pfad):
     return temp
 
 
-def send_temp(temp):
-    payload = {'action': 'add_temp', 'pa': 'add_temp', 'pb': '2', 'pc': temp}
+def send_temp(conf_sensor_nr, temp):
+    payload = {
+        'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': '2', 'pc': temp}
     res = requests.get(
         config.logging_url, params=payload,
         auth=(config.logging_user, config.logging_pw))
@@ -51,4 +53,4 @@ if __name__ == '__main__':
     temp = read_temp(sensorpfad)
 
     if None != temp:
-        send_temp(temp)
+        send_temp(conf_sensor_nr, temp)
