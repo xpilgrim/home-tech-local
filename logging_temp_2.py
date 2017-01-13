@@ -9,8 +9,6 @@ import RPi.GPIO as GPIO
 import config
 
 # config
-url = config.logging_url
-
 # Die Sensor-ID laut /sys/bus/w1/devices
 sensorid = "28-000007520a0a"
 sensorpfad = "/sys/bus/w1/devices/%s/w1_slave" % sensorid
@@ -35,9 +33,11 @@ def lies_temp(pfad):
 
 
 def send_temp(temp):
-    send_url = url % temp
+    payload = {'action': 'x', 'pa': 'add_temp', 'pb': '2', 'pc': temp}
+    res = requests.get(
+        config.logging_url, params=payload,
+        auth=(config.logging_user, config.logging_pw))
 
-    res = requests.get(send_url, auth=(config.logging_user, config.logging_pw))
     print res
     #try:
     #    result = urllib2.urlopen(send_url);
