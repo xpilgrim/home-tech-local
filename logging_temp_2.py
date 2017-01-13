@@ -34,8 +34,7 @@ def read_temp(pfad):
 
 
 def send_temp(conf_sensor_nr, temp):
-    payload = {
-        'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': '2', 'pc': temp}
+    payload = {'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': temp}
     res = requests.get(
         config.logging_url, params=payload,
         auth=(config.logging_user, config.logging_pw))
