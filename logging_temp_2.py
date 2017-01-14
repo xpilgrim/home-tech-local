@@ -54,6 +54,8 @@ def read_last_temp(conf_sensor_nr):
         if temp >= 70000:
             temp = temp + 35000
         last_temp = str(temp)
+        print temp
+        print last_temp
     except requests.exceptions.RequestException as e:
         print e
     return last_temp
