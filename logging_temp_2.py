@@ -38,7 +38,7 @@ def read_temp(pfad):
                 if temp_a < 50000:
                     temp_a = temp_a + 20000
                 if temp_a >= 50000 and temp_a < 60000:
-                    temp = temp + 25000
+                    temp_a = temp_a + 25000
                 if temp_a >= 60000 and temp_a < 70000:
                     temp_a = temp_a + 28000
                 if temp_a >= 70000:
