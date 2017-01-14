@@ -46,11 +46,11 @@ def read_last_temp(conf_sensor_nr):
         # is lower as the real flow temperature
         # so we have to correct it
         if temp < 50000:
-            temp = last_temp + 20000
+            temp = temp + 20000
         if temp >= 50000 and temp < 60000:
-            temp = last_temp + 25000
+            temp = temp + 25000
         if temp >= 60000 and temp < 70000:
-            temp = last_temp + 28000
+            temp = temp + 28000
         if temp >= 70000:
             temp = temp + 35000
         last_temp = str(temp)
