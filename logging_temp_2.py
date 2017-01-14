@@ -28,6 +28,24 @@ def read_temp(pfad):
                 temp = m.group(2)
                 datei.close()
                 print temp
+                temp_a = int(temp)
+                print "a"
+                print temp_a
+
+                # Measured value on measuring point
+                # is lower as the real flow temperature
+                # so we have to correct it
+                if temp_a < 50000:
+                    temp_a = temp_a + 20000
+                if temp_a >= 50000 and temp_a < 60000:
+                    temp = temp + 25000
+                if temp_a >= 60000 and temp_a < 70000:
+                    temp_a = temp_a + 28000
+                if temp_a >= 70000:
+                    temp_a = temp_a + 35000
+                temp = str(temp_a)
+                print temp
+
     except IOError:
         print "Konnte Sensor nicht lesen"
     return temp
@@ -41,24 +59,6 @@ def read_last_temp(conf_sensor_nr):
             config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
         print res.text
-        temp = int(res.text)
-        print "a"
-        print temp
-
-        # Measured value on measuring point
-        # is lower as the real flow temperature
-        # so we have to correct it
-        if temp < 50000:
-            temp = temp + 20000
-        if temp >= 50000 and temp < 60000:
-            temp = temp + 25000
-        if temp >= 60000 and temp < 70000:
-            temp = temp + 28000
-        if temp >= 70000:
-            temp = temp + 35000
-        last_temp = str(temp)
-        print temp
-        print last_temp
     except requests.exceptions.RequestException as e:
         print e
     return last_temp
