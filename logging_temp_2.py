@@ -45,14 +45,14 @@ def read_last_temp(conf_sensor_nr):
         # Measured value on measuring point
         # is lower as the real flow temperature
         # so we have to correct it
-        if last_temp < 50000:
-            last_temp = last_temp + 20000
-        if last_temp >= 50000 and last_temp < 60000:
-            last_temp = last_temp + 25000
-        if last_temp >= 60000 and last_temp < 70000:
-            last_temp = last_temp + 28000
-        if last_temp >= 70000:
-            last_temp = last_temp + 35000
+        #if last_temp < 50000:
+        #    last_temp = last_temp + 20000
+        #if last_temp >= 50000 and last_temp < 60000:
+        #    last_temp = last_temp + 25000
+        #if last_temp >= 60000 and last_temp < 70000:
+        #    last_temp = last_temp + 28000
+        #if last_temp >= 70000:
+        #    last_temp = last_temp + 35000
 
     except requests.exceptions.RequestException as e:
         print e
