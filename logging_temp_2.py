@@ -42,6 +42,9 @@ def read_last_temp(conf_sensor_nr):
             auth=(config.logging_user, config.logging_pw))
         print res.text
         temp = int(res.text)
+        print "a"
+        print temp
+
         # Measured value on measuring point
         # is lower as the real flow temperature
         # so we have to correct it
