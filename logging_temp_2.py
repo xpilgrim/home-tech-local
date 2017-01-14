@@ -36,18 +36,18 @@ def read_temp(pfad):
                 # is lower as the real flow temperature
                 # so we have to correct it
                 if temp_a < 50000:
-                    temp_a = temp_a + 20000
+                    temp_b = temp_a + 20000
                     print 1
                 if temp_a >= 50000 and temp_a < 60000:
-                    temp_a = temp_a + 25000
+                    temp_b = temp_a + 25000
                     print 2
                 if temp_a >= 60000 and temp_a < 70000:
-                    temp_a = temp_a + 28000
+                    temp_b = temp_a + 28000
                     print 3
                 if temp_a >= 70000:
-                    temp_a = temp_a + 35000
+                    temp_b = temp_a + 35000
                     print 4
-                temp = str(temp_a)
+                temp = str(temp_b)
                 print temp
 
     except IOError:
