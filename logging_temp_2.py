@@ -84,6 +84,7 @@ def send_temp(conf_sensor_nr, temp):
 
 
 if __name__ == '__main__':
+    print "Let's rock"
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     temp = read_temp(conf_sensor_pfad)
@@ -97,3 +98,4 @@ if __name__ == '__main__':
             send_temp(conf_sensor_nr, temp)
         else:
             print "Nothing to do, temp hasn't changed"
+    print "Let's go home"
