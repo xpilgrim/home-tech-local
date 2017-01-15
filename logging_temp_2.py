@@ -6,6 +6,7 @@
 import re
 import requests
 import RPi.GPIO as GPIO
+from time import gmtime, strftime
 import config
 
 # config
@@ -85,6 +86,7 @@ def send_temp(conf_sensor_nr, temp):
 
 if __name__ == '__main__':
     print "Let's go"
+    print strftime("%Y-%m-%d %H:%M:%S", gmtime())
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     temp = read_temp(conf_sensor_pfad)
