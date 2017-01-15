@@ -84,7 +84,7 @@ def send_temp(conf_sensor_nr, temp):
 
 
 if __name__ == '__main__':
-    print "Let's rock"
+    print "Let's go"
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
     temp = read_temp(conf_sensor_pfad)
