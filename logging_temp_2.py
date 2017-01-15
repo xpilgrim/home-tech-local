@@ -11,7 +11,7 @@ import config
 
 # config
 conf_sensor_nr = 2
-# Die Sensor-ID laut /sys/bus/w1/devices
+# Sensor-ID according /sys/bus/w1/devices
 conf_sensor_id = "28-000007520a0a"
 conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
 
@@ -66,6 +66,9 @@ def read_last_temp(conf_sensor_nr):
         res = requests.get(
             config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
+        print "return message from read_last_temp:"
+        print res
+        print "last_temp:"
         print res.text.strip()
         last_temp = res.text
     except requests.exceptions.RequestException as e:
@@ -79,6 +82,7 @@ def send_temp(conf_sensor_nr, temp):
         res = requests.get(
             config.logging_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
+        print "return message from sent_temp:"
         print res
     except requests.exceptions.RequestException as e:
         print e
@@ -92,11 +96,11 @@ if __name__ == '__main__':
     temp = read_temp(conf_sensor_pfad)
 
     if None != temp:
-        temp_old = read_last_temp(conf_sensor_nr)
+        temp_last = read_last_temp(conf_sensor_nr)
         #print temp_old.strip()
         #print temp[:2]
         # send only if different value
-        if temp_old.strip() != temp[:2]:
+        if temp_last.strip() != temp[:2]:
             send_temp(conf_sensor_nr, temp)
         else:
             print "Nothing to do, temp hasn't changed"
