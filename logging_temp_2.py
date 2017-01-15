@@ -28,14 +28,14 @@ def read_temp(pfad):
                 #temp = float(m.group(2)) / 1000
                 temp = m.group(2)
                 datei.close()
+                print "current temp:"
                 print temp
                 temp_a = int(temp)
-                print "a"
-                print temp_a
 
                 # Measured value on measuring point
                 # is lower as the real flow temperature
                 # so we have to correct it
+                print "correcting temp:"
                 if temp_a < 20000:
                     temp_b = temp_a
                     print 0
@@ -44,18 +44,20 @@ def read_temp(pfad):
                     print 1
                 if temp_a >= 50000 and temp_a < 60000:
                     temp_b = temp_a + 25000
-                    print 2
+                    print 3
                 if temp_a >= 60000 and temp_a < 70000:
                     temp_b = temp_a + 28000
-                    print 3
+                    print 4
                 if temp_a >= 70000:
                     temp_b = temp_a + 35000
-                    print 4
+                    print 5
+
                 temp = str(temp_b)
+                print "corrected temp:"
                 print temp
 
     except IOError:
-        print "Konnte Sensor nicht lesen"
+        print "Error reading Sensor"
     return temp
 
 
