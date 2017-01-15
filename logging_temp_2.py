@@ -17,6 +17,7 @@ conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
 
 
 def read_temp(pfad):
+    """read temp from sensor"""
     temp = None
     try:
         datei = open(pfad, "r")
@@ -62,6 +63,7 @@ def read_temp(pfad):
 
 
 def read_last_temp(conf_sensor_nr):
+    """read last registered temp from database"""
     last_temp = None
     payload = {'action': 'load_temp', 'pa': conf_sensor_nr}
     try:
@@ -79,6 +81,7 @@ def read_last_temp(conf_sensor_nr):
 
 
 def send_temp(conf_sensor_nr, temp):
+    """register current temp in database"""
     payload = {'action': 'add_temp', 'pa': conf_sensor_nr, 'pb': temp}
     try:
         res = requests.get(
