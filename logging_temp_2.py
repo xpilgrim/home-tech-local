@@ -66,7 +66,7 @@ def read_last_temp(conf_sensor_nr):
         res = requests.get(
             config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
-        print res.text
+        print res.text.strip()
         last_temp = res.text
     except requests.exceptions.RequestException as e:
         print e
@@ -93,8 +93,8 @@ if __name__ == '__main__':
 
     if None != temp:
         temp_old = read_last_temp(conf_sensor_nr)
-        print temp_old.strip()
-        print temp[:2]
+        #print temp_old.strip()
+        #print temp[:2]
         # send only if different value
         if temp_old.strip() != temp[:2]:
             send_temp(conf_sensor_nr, temp)
