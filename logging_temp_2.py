@@ -35,7 +35,10 @@ def read_temp(pfad):
                 # Measured value on measuring point
                 # is lower as the real flow temperature
                 # so we have to correct it
-                if temp_a < 50000:
+                if temp_a < 20000:
+                    temp_b = temp_a
+                    print 0
+                if temp_a >= 20000 and temp_a < 50000:
                     temp_b = temp_a + 20000
                     print 1
                 if temp_a >= 50000 and temp_a < 60000:
