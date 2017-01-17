@@ -7,6 +7,7 @@ import re
 import requests
 import RPi.GPIO as GPIO
 from time import gmtime, strftime
+import datetime
 import config
 
 # config
@@ -78,6 +79,26 @@ def read_last_temp(conf_sensor_nr):
     except requests.exceptions.RequestException as e:
         print e
     return last_temp
+
+
+def delete_old_temps(conf_sensor_nr):
+    """delete old registered temp from database"""
+    time_now = datetime.datetime.now()
+    if time_now.hour != 4:
+            if time_now.minute != 40:
+                print "No time for deleting"
+                return
+
+    print "It's time for deleting"
+    payload = {'action': 'delete_logs', 'pa': conf_sensor_nr, 'pb': '0'}
+    try:
+        res = requests.get(
+            config.logged_url, params=payload,
+            auth=(config.logging_user, config.logging_pw))
+        print "return message from delete old logs:"
+        print res
+    except requests.exceptions.RequestException as e:
+        print e
 
 
 def send_temp(conf_sensor_nr, temp):
