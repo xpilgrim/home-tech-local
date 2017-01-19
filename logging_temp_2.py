@@ -84,8 +84,8 @@ def read_last_temp(conf_sensor_nr):
 def delete_old_temps(conf_sensor_nr):
     """delete old registered temp from database"""
     time_now = datetime.datetime.now()
-    if time_now.hour != 4:
-            if time_now.minute != 40:
+    if time_now.hour != 11:
+            if time_now.minute != 35:
                 print "No time for deleting"
                 return
 
@@ -97,6 +97,7 @@ def delete_old_temps(conf_sensor_nr):
             auth=(config.logging_user, config.logging_pw))
         print "return message from delete old logs:"
         print res
+        print res.text.strip()
     except requests.exceptions.RequestException as e:
         print e
 
