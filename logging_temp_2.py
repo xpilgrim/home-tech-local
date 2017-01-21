@@ -84,10 +84,9 @@ def read_last_temp(conf_sensor_nr):
 def delete_old_temps(conf_sensor_nr):
     """delete old registered temp from database"""
     time_now = datetime.datetime.now()
-    if time_now.hour != 4:
-            if time_now.minute != 40:
-                print "No time for deleting"
-                return
+    if time_now.hour != 4 and time_now.minute != 40:
+        print "No time for deleting"
+        return
 
     print "It's time for deleting"
     payload = {'action': 'delete_logs', 'pa': conf_sensor_nr, 'pb': '0'}
