@@ -84,8 +84,8 @@ def read_last_temp(conf_sensor_nr):
 def delete_old_temps(conf_sensor_nr):
     """delete old registered temp from database"""
     time_now = datetime.datetime.now()
-    print time_now.hour
-    if time_now.hour != 4 and time_now.minute != 40:
+    #print time_now.hour
+    if (time_now.hour != 6 and time_now.minute != 40):
         print "No time for deleting"
         return
 
