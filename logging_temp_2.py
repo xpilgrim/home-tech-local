@@ -88,9 +88,9 @@ def delete_old_temps(conf_sensor_nr):
     if time_now.hour != 7:
         print "No time for deleting"
         return
-        if time_now.minute != 40:
-            print "No time for deleting"
-            return
+    if time_now.minute != 40:
+        print "No time for deleting"
+        return
 
     print "It's time for deleting"
     payload = {'action': 'delete_logs', 'pa': conf_sensor_nr, 'pb': '0'}
