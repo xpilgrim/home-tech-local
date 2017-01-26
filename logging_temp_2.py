@@ -15,6 +15,8 @@ conf_sensor_nr = 2
 # Sensor-ID according /sys/bus/w1/devices
 conf_sensor_id = "28-000007520a0a"
 conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
+# amount of days for delte old logs
+delete_days_back = 1
 
 
 def read_temp(pfad):
@@ -81,7 +83,7 @@ def read_last_temp(conf_sensor_nr):
     return last_temp
 
 
-def delete_old_temps(conf_sensor_nr):
+def delete_old_temps(conf_sensor_nr, delete_days_back):
     """delete old registered temps from database"""
     time_now = datetime.datetime.now()
     #print time_now.hour
@@ -93,7 +95,8 @@ def delete_old_temps(conf_sensor_nr):
         return
 
     print "It's time for deleting"
-    payload = {'action': 'delete_logs', 'pa': conf_sensor_nr, 'pb': '0'}
+    payload = {'action': 'delete_logs',
+        'pa': conf_sensor_nr, 'pb': delete_days_back}
     #payload = {'action': 'delete_logs', 'pa': '1', 'pb': '0'}
     try:
         res = requests.get(
@@ -122,7 +125,7 @@ def send_temp(conf_sensor_nr, temp):
 if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    delete_old_temps(conf_sensor_nr)
+    delete_old_temps(conf_sensor_nr, delete_days_back)
 
     GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BOARD)
