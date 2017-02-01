@@ -2,11 +2,18 @@
 # -*- coding: utf-8 -*-
 
 # common config options for home-tech logging
-
 # urls
 logging_url = ""
 logged_url = ""
 # authentication
 logging_user = ""
 logging_pw = ""
+
+# common config options for home-tech webcam
+# ssh host and authentication
+ssh_host = ""
+ssh_port = ""
+ssh_user = ""
+ssh_pw = ""
+
 
