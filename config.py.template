@@ -9,11 +9,16 @@ logged_url = ""
 logging_user = ""
 logging_pw = ""
 
+
 # common config options for home-tech webcam
 # ssh host and authentication
 ssh_host = ""
 ssh_port = ""
 ssh_user = ""
 ssh_pw = ""
+# paramiko logfile
+ssh_log = ""
 
-
+# special config for home-tech webcam
+pict_file_local_1 = ""
+pict_file_remote_1 = ""
