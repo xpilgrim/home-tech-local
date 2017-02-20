@@ -20,5 +20,5 @@ ssh_pw = ""
 ssh_log = ""
 
 # special config for home-tech webcam
-pict_file_local_1 = ""
-pict_file_remote_1 = ""
+pict_path_local_1 = ""
+pict_path_remote_1 = ""
