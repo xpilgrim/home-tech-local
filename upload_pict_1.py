@@ -3,7 +3,8 @@
 
 import os
 import paramiko
-from time import time, localtime, strftime
+from time import localtime, strftime
+import time
 import config
 
 # to install paramiko:
@@ -12,7 +13,7 @@ import config
 # config
 paramiko.util.log_to_file(config.ssh_log)
 file_prefix = "pict_1_"
-delete_older_than = 10  # days
+delete_older_than = 20  # days
 
 
 def delete_pict():
