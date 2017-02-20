@@ -1,8 +1,9 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
 import paramiko
-from time import localtime, strftime
+from time import time, localtime, strftime
 import config
 
 # to install paramiko:
@@ -11,6 +12,21 @@ import config
 # config
 paramiko.util.log_to_file(config.ssh_log)
 file_prefix = "pict_1_"
+delete_older_than = 10  # days
+
+
+def delete_pict():
+    """delte old pictures"""
+    now = time.time()
+    old = now - delete_older_than * 24 * 60 * 60
+
+    for f in os.listdir(config.pict_path_local_1):
+        path = os.path.join(config.pict_path_local_1, f)
+        if os.path.isfile(path):
+            stat = os.stat(path)
+            if stat.st_ctime < old:
+                print "removing: ", path
+                os.remove(path)
 
 
 def upload_pict():
@@ -26,6 +42,7 @@ def upload_pict():
         + file_prefix + strftime("%Y-%m-%d_%H", localtime()) + minute) + ".jpg"
     print file_remote
     try:
+        print "uploading: ", file_local
         # Open a transport
         transport = paramiko.Transport((config.ssh_host, config.ssh_port))
         # Auth
@@ -46,4 +63,5 @@ if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", localtime())
     upload_pict()
+    delete_pict()
     print "Let's go home"
