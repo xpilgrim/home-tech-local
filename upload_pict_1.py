@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import paramiko
-from time import gmtime, strftime
+from time import localtime, strftime
 import config
 
 # to install paramiko:
@@ -15,12 +15,12 @@ file_prefix = "pict_1_"
 
 def upload_pict():
     """upload webcam pict"""
-    minute = str(int(strftime("%M", gmtime())) - 1)
+    minute = str(int(strftime("%M", localtime())) - 1)
     file_local = (config.pict_path_local_1
-        + file_prefix + strftime("%Y-%m-%d_%H", gmtime()) + minute) + ".jpg"
+        + file_prefix + strftime("%Y-%m-%d_%H", localtime()) + minute) + ".jpg"
     print file_local
     file_remote = (config.pict_path_remote_1
-        + file_prefix + strftime("%Y-%m-%d_%H", gmtime()) + minute) + ".jpg"
+        + file_prefix + strftime("%Y-%m-%d_%H", localtime()) + minute) + ".jpg"
     print file_remote
     try:
         # Open a transport
@@ -41,6 +41,6 @@ def upload_pict():
 
 if __name__ == '__main__':
     print "\nLet's go"
-    print strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    print strftime("%Y-%m-%d %H:%M:%S", localtime())
     upload_pict()
     print "Let's go home"
