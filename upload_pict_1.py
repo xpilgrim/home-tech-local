@@ -65,6 +65,6 @@ def upload_pict():
 if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", localtime())
-    #upload_pict()
+    upload_pict()
     delete_pict()
     print "Let's go home"
