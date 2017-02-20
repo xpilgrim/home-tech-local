@@ -22,6 +22,8 @@ def delete_pict():
     old = now - delete_older_than * 24 * 60 * 60
 
     for f in os.listdir(config.pict_path_local_1):
+        if f == ".gitignore":
+            continue
         path = os.path.join(config.pict_path_local_1, f)
         if os.path.isfile(path):
             stat = os.stat(path)
