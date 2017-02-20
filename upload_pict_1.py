@@ -29,7 +29,7 @@ def delete_pict():
             stat = os.stat(path)
             if stat.st_ctime < old:
                 print "removing: ", path
-                #os.remove(path)
+                os.remove(path)
 
 
 def upload_pict():
