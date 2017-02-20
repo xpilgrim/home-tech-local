@@ -17,7 +17,7 @@ delete_older_than = 20  # days
 
 
 def delete_pict():
-    """delte old pictures"""
+    """delete old pictures"""
     now = time.time()
     old = now - delete_older_than * 24 * 60 * 60
 
@@ -27,7 +27,7 @@ def delete_pict():
             stat = os.stat(path)
             if stat.st_ctime < old:
                 print "removing: ", path
-                os.remove(path)
+                #os.remove(path)
 
 
 def upload_pict():
@@ -63,6 +63,6 @@ def upload_pict():
 if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", localtime())
-    upload_pict()
+    #upload_pict()
     delete_pict()
     print "Let's go home"
