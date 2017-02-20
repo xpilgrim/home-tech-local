@@ -15,7 +15,10 @@ file_prefix = "pict_1_"
 
 def upload_pict():
     """upload webcam pict"""
-    minute = str(int(strftime("%M", localtime())) - 1)
+    if int(strftime("%M", localtime())) - 1 < 10:
+        minute = '0' + str(int(strftime("%M", localtime())) - 1)
+    else:
+        minute = str(int(strftime("%M", localtime())) - 1)
     file_local = (config.pict_path_local_1
         + file_prefix + strftime("%Y-%m-%d_%H", localtime()) + minute) + ".jpg"
     print file_local
