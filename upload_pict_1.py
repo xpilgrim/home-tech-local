@@ -64,6 +64,7 @@ def upload_pict():
 
 def list_picts_online():
     """list online webcam picts"""
+    picts_online = None
     try:
         print "listing: ", config.pict_path_remote_1
         # Open a transport
@@ -73,13 +74,14 @@ def list_picts_online():
         # Go!
         sftp = paramiko.SFTPClient.from_transport(transport)
         # Get list
-        serverfilelist = sftp.listdir(config.pict_path_remote_1)
+        picts_online = sftp.listdir(config.pict_path_remote_1)
         # Close
         sftp.close()
         transport.close()
-        print serverfilelist
+        #print serverfilelist
     except Exception as e:
         print e
+    return picts_online
 
 
 if __name__ == '__main__':
