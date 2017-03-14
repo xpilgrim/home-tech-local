@@ -62,9 +62,30 @@ def upload_pict():
         print e
 
 
+def list_picts_online():
+    """list online webcam picts"""
+    try:
+        print "listing: ", config.pict_path_remote_1
+        # Open a transport
+        transport = paramiko.Transport((config.ssh_host, config.ssh_port))
+        # Auth
+        transport.connect(username=config.ssh_user, password=config.ssh_pw)
+        # Go!
+        sftp = paramiko.SFTPClient.from_transport(transport)
+        # Get list
+        serverfilelist = sftp.listdir(config.pict_path_remote_1)
+        # Close
+        sftp.close()
+        transport.close()
+        print serverfilelist
+    except Exception as e:
+        print e
+
+
 if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", localtime())
     upload_pict()
     delete_pict()
+    #list_picts_online()
     print "Let's go home"
