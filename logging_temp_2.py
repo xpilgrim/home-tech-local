@@ -35,7 +35,7 @@ def read_temp(pfad):
                 #temp = float(m.group(2)) / 1000
                 temp = m.group(2)
                 datei.close()
-                print "current temp raw: " + temp
+                print "temp current raw: " + temp
                 temp_a = int(temp)
 
                 # Measured value on measuring point
@@ -59,7 +59,7 @@ def read_temp(pfad):
                     correct_level = "5"
                 print "correcting temp level: " + correct_level
                 temp = str(temp_b)
-                print "corrected temp raw: " + temp
+                print "temp corrected raw: " + temp
 
     except IOError:
         print "Error reading Sensor"
@@ -74,9 +74,8 @@ def read_last_temp(conf_sensor_nr):
         res = requests.get(
             config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
-        print "return message from read_last_temp %r: " % res
-        print res
-        print "temp_last real:  " + res.text.strip()
+        print "return message from read_last_temp: %r" % res
+        print "temp last real:  " + res.text.strip()
         #print res.text.strip()
         last_temp = res.text
     except requests.exceptions.RequestException as e:
@@ -103,7 +102,7 @@ def delete_old_temps(conf_sensor_nr, delete_days_back):
         res = requests.get(
             config.logging_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
-        print "return message from delete old logs:"
+        print "return message from delete old logs: %r" % res
         print res
         print res.text.strip()
     except requests.exceptions.RequestException as e:
@@ -117,7 +116,7 @@ def send_temp(conf_sensor_nr, temp):
         res = requests.get(
             config.logging_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
-        print "return message from sent_temp:"
+        print "return message from sent_temp: %r" % res
         print res
     except requests.exceptions.RequestException as e:
         print e
