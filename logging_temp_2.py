@@ -13,8 +13,9 @@ import config
 # config
 conf_sensor_nr = 2
 # Sensor-ID according /sys/bus/w1/devices
-conf_sensor_id = "28-000007520a0a"
-conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
+conf_sensor_pfad = config.sensor_temp_02_id
+#conf_sensor_id = "28-000007520a0a"
+#conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
 # amount of days for delte old logs
 delete_days_back = 5
 
