@@ -35,7 +35,7 @@ def read_temp(pfad):
                 #temp = float(m.group(2)) / 1000
                 temp = m.group(2)
                 datei.close()
-                print "temp current raw:      " + temp
+                print "temp current raw......." + temp
                 temp_a = int(temp)
 
                 # Measured value on measuring point
@@ -57,9 +57,9 @@ def read_temp(pfad):
                 if temp_a >= 70000:
                     temp_b = temp_a + 35000
                     correct_level = "5"
-                print "correcting temp level: " + correct_level
+                print "correcting temp level.." + correct_level
                 temp = str(temp_b)
-                print "temp corrected raw:    " + temp
+                print "temp corrected raw....." + temp
 
     except IOError:
         print "Error reading Sensor"
@@ -127,7 +127,7 @@ def write_temp_buffer(conf_sensor_nr, temp):
         return
 
     real_temp = int(temp) / 1000
-    print "temp current real:     " + str(real_temp)
+    print "temp current real......" + str(real_temp)
 
     if real_temp < 90:
         print "disable buffer"
