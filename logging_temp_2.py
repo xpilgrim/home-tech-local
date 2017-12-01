@@ -131,7 +131,7 @@ def write_temp_buffer(conf_sensor_nr, temp):
         print "Nothing to do, using buffer disabled"
         return
 
-    real_temp = int(temp) / 1000)
+    real_temp = int(temp) / 1000
     print "real_temp:"
     print str(real_temp)
 
