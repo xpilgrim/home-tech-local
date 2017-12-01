@@ -1,7 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+#
+# config file for
+# - logging_temp_x.py
+# - upload_pict.py
 
 # common config options for home-tech logging
+
+# sensors temprature
+sensor_temp_01_id = ""
+sensor_temp_02_id = ""
+sensor_temp_03_id = ""
+sensor_temp_04_id = ""
+sensor_temp_05_id = ""
+
+sensor_temp_path = ""
+
+
 # urls
 logging_url = ""
 logged_url = ""
