@@ -35,7 +35,7 @@ def read_temp(pfad):
                 #temp = float(m.group(2)) / 1000
                 temp = m.group(2)
                 datei.close()
-                print "temp current raw: " + temp
+                print "temp current raw:      " + temp
                 temp_a = int(temp)
 
                 # Measured value on measuring point
@@ -59,7 +59,7 @@ def read_temp(pfad):
                     correct_level = "5"
                 print "correcting temp level: " + correct_level
                 temp = str(temp_b)
-                print "temp corrected raw: " + temp
+                print "temp corrected raw:     " + temp
 
     except IOError:
         print "Error reading Sensor"
@@ -88,10 +88,10 @@ def delete_old_temps(conf_sensor_nr, delete_days_back):
     time_now = datetime.datetime.now()
     #print time_now.hour
     if time_now.hour != 7:
-        print "No time for deleting"
+        print "No time for deleting..."
         return
     if time_now.minute != 40:
-        print "No time for deleting"
+        print "No time for deleting..."
         return
 
     print "It's time for deleting"
@@ -103,7 +103,6 @@ def delete_old_temps(conf_sensor_nr, delete_days_back):
             config.logging_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
         print "return message from delete old logs: %r" % res
-        print res
         print res.text.strip()
     except requests.exceptions.RequestException as e:
         print e
@@ -117,7 +116,6 @@ def send_temp(conf_sensor_nr, temp):
             config.logging_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
         print "return message from sent_temp: %r" % res
-        print res
     except requests.exceptions.RequestException as e:
         print e
 
@@ -125,7 +123,7 @@ def send_temp(conf_sensor_nr, temp):
 def write_temp_buffer(conf_sensor_nr, temp):
     """write config file for buffering temp via fhem"""
     if use_temp_buffer is None:
-        print "Nothing to do, using buffer disabled"
+        print "Nothing to do, using buffer disabled..."
         return
 
     real_temp = int(temp) / 1000
@@ -157,5 +155,5 @@ if __name__ == '__main__':
         if temp_last.strip() != temp[:2]:
             send_temp(conf_sensor_nr, temp)
         else:
-            print "Nothing to do, temp hasn't changed"
+            print "Nothing to do, temp hasn't changed..."
     print "Let's go home"
