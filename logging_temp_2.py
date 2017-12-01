@@ -35,8 +35,7 @@ def read_temp(pfad):
                 #temp = float(m.group(2)) / 1000
                 temp = m.group(2)
                 datei.close()
-                print "current temp:"
-                print temp
+                print "current temp raw: " + temp
                 temp_a = int(temp)
 
                 # Measured value on measuring point
@@ -153,12 +152,12 @@ if __name__ == '__main__':
     temp = read_temp(conf_sensor_pfad)
 
     if None != temp:
+        write_temp_buffer(conf_sensor_nr, temp)
         temp_last = read_last_temp(conf_sensor_nr)
         #print temp_old.strip()
         #print temp[:2]
         # send only if different value
         if temp_last.strip() != temp[:2]:
-            write_temp_buffer(conf_sensor_nr, temp)
             send_temp(conf_sensor_nr, temp)
         else:
             print "Nothing to do, temp hasn't changed"
