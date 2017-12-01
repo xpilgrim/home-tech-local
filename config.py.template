@@ -14,8 +14,6 @@ sensor_temp_03_id = ""
 sensor_temp_04_id = ""
 sensor_temp_05_id = ""
 
-sensor_temp_path = ""
-
 
 # urls
 logging_url = ""
