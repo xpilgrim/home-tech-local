@@ -41,26 +41,25 @@ def read_temp(pfad):
                 # Measured value on measuring point
                 # is lower as the real flow temperature
                 # so we have to correct it
-                print "correcting temp:"
+                correct_level = "0"
+                
                 if temp_a < 20000:
                     temp_b = temp_a
-                    print 0
                 if temp_a >= 20000 and temp_a < 50000:
                     temp_b = temp_a + 20000
-                    print 1
+                    correct_level = "1"
                 if temp_a >= 50000 and temp_a < 60000:
                     temp_b = temp_a + 25000
-                    print 3
+                    correct_level = "3"
                 if temp_a >= 60000 and temp_a < 70000:
                     temp_b = temp_a + 28000
-                    print 4
+                    correct_level = "4"
                 if temp_a >= 70000:
                     temp_b = temp_a + 35000
-                    print 5
-
+                    correct_level = "5"
+                print "correcting temp level: " + correct_level
                 temp = str(temp_b)
-                print "corrected temp:"
-                print temp
+                print "corrected temp raw: " + temp
 
     except IOError:
         print "Error reading Sensor"
@@ -131,8 +130,7 @@ def write_temp_buffer(conf_sensor_nr, temp):
         return
 
     real_temp = int(temp) / 1000
-    print "real_temp:"
-    print str(real_temp)
+    print "real temp: " + str(real_temp)
 
     if real_temp < 90:
         print "disable buffer"
