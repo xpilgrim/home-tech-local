@@ -75,7 +75,7 @@ def read_last_temp(conf_sensor_nr):
             config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
         print "return message from read_last_temp: %r" % res
-        print "temp last real:        " + res.text.strip()
+        print "temp last real........." + res.text.strip()
         #print res.text.strip()
         last_temp = res.text
     except requests.exceptions.RequestException as e:
