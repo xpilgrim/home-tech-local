@@ -42,7 +42,7 @@ def read_temp(pfad):
                 # is lower as the real flow temperature
                 # so we have to correct it
                 correct_level = "0"
-                
+
                 if temp_a < 20000:
                     temp_b = temp_a
                 if temp_a >= 20000 and temp_a < 50000:
@@ -76,8 +76,8 @@ def read_last_temp(conf_sensor_nr):
             auth=(config.logging_user, config.logging_pw))
         print "return message from read_last_temp:"
         print res
-        print "last_temp:"
-        print res.text.strip()
+        print "temp_last real:  " + res.text.strip()
+        #print res.text.strip()
         last_temp = res.text
     except requests.exceptions.RequestException as e:
         print e
