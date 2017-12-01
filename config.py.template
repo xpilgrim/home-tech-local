@@ -8,6 +8,7 @@
 # common config options for home-tech logging
 
 # sensors temprature
+# sensor-id according /sys/bus/w1/devices
 sensor_temp_01_id = ""
 sensor_temp_02_id = ""
 sensor_temp_03_id = ""
