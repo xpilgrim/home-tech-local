@@ -18,6 +18,8 @@ conf_sensor_pfad = config.sensor_temp_02_id
 #conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
 # amount of days for delte old logs
 delete_days_back = 5
+# use temp buffer
+use_temp_buffer = True
 
 
 def read_temp(pfad):
@@ -123,6 +125,24 @@ def send_temp(conf_sensor_nr, temp):
         print e
 
 
+def write_temp_buffer(conf_sensor_nr, temp):
+    """write config file for buffering temp via fhem"""
+    if use_temp_buffer is None:
+        print "Nothing to do, using buffer disabled"
+        return
+    real_temp = temp * 2 - 31
+
+    if real_temp < 90:
+        print "disable buffer"
+    if real_temp => 90:
+        print "using buffer 1"
+    if real_temp => 100:
+        print "using buffer 2"
+
+    print "real_temp:"
+    print real_temp
+
+
 if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", gmtime())
@@ -138,6 +158,7 @@ if __name__ == '__main__':
         #print temp[:2]
         # send only if different value
         if temp_last.strip() != temp[:2]:
+            write_temp_buffer(conf_sensor_nr, temp)
             send_temp(conf_sensor_nr, temp)
         else:
             print "Nothing to do, temp hasn't changed"
