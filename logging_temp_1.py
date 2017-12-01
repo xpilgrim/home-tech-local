@@ -12,9 +12,9 @@ import config
 # config
 conf_sensor_nr = 1
 # Sensor-ID according /sys/bus/w1/devices
-conf_sensor_id = "28-00000750f60a"
-conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
-
+#conf_sensor_id = "28-00000750f60a"
+#conf_sensor_pfad = "/sys/bus/w1/devices/%s/w1_slave" % conf_sensor_id
+conf_sensor_pfad = config.sensor_temp_01_id
 
 def read_temp(pfad):
     """read temp from sensor"""
