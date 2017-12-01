@@ -130,7 +130,10 @@ def write_temp_buffer(conf_sensor_nr, temp):
     if use_temp_buffer is None:
         print "Nothing to do, using buffer disabled"
         return
+
     real_temp = str(int(temp) / 1000)
+    print "real_temp:"
+    print real_temp
 
     if real_temp < 90:
         print "disable buffer"
@@ -138,9 +141,6 @@ def write_temp_buffer(conf_sensor_nr, temp):
         print "using buffer 1"
     if real_temp >= 100:
         print "using buffer 2"
-
-    print "real_temp:"
-    print real_temp
 
 
 if __name__ == '__main__':
