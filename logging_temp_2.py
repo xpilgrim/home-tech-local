@@ -75,7 +75,7 @@ def read_last_temp(conf_sensor_nr):
             config.logged_url, params=payload,
             auth=(config.logging_user, config.logging_pw))
         print "return message from read_last_temp: %r" % res
-        print "temp last real:         " + res.text.strip()
+        print "temp last real:        " + res.text.strip()
         #print res.text.strip()
         last_temp = res.text
     except requests.exceptions.RequestException as e:
@@ -127,7 +127,7 @@ def write_temp_buffer(conf_sensor_nr, temp):
         return
 
     real_temp = int(temp) / 1000
-    print "real temp:          " + str(real_temp)
+    print "temp current real:     " + str(real_temp)
 
     if real_temp < 90:
         print "disable buffer"
