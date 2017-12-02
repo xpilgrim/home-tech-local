@@ -121,7 +121,7 @@ def send_temp(conf_sensor_nr, temp):
 
 
 def write_temp_buffer(conf_sensor_nr, temp):
-    """write config file for buffering temp via fhem"""
+    """write html file with temp for fhem"""
     if use_temp_buffer is None:
         print "Nothing to do, using buffer disabled..."
         return
@@ -129,13 +129,28 @@ def write_temp_buffer(conf_sensor_nr, temp):
     real_temp = int(temp) / 1000
     print "temp current real......" + str(real_temp)
 
-    if real_temp < 90:
-        print "disable buffer"
-    if real_temp >= 90:
-        print "using buffer 1"
-    if real_temp >= 100:
-        print "using buffer 2"
-
+    filename = "public_html/temp_2.html"
+    try:
+        f_html_temp = open(filename, 'w')
+    except IOError as (errno, strerror):
+        log_message = ("write_to_file_record_params: I/O error({0}): {1}"
+                        .format(errno, strerror) + ": " + filename)
+        print log_message
+    else:
+        f_html_temp.write("<!DOCTYPE html>\n")
+        f_html_temp.write('html lang="en"\n')
+        f_html_temp.write('<head>\n')
+        f_html_temp.write('<meta charset="utf-8">\n')
+        f_html_temp.write('<meta http-equiv="X-UA-Compatible" content="IE=edge">\n')
+        f_html_temp.write('<meta name="viewport" content="width=device-width, initial-scale=1">\n')
+        f_html_temp.write('<title>Home-Tech local temp_2</title>\n')
+        f_html_temp.write('</head>\n')
+        f_html_temp.write('<body>\n')
+        f_html_temp.write(real_temp)
+        f_html_temp.write('\n</body>\n')
+        f_html_temp.write('</html>\n')
+        f_html_temp.close
+        print "html file written..."
 
 if __name__ == '__main__':
     print "\nLet's go"
