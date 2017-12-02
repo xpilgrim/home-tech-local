@@ -129,7 +129,7 @@ def write_temp_buffer(conf_sensor_nr, temp):
     real_temp = int(temp) / 1000
     print "temp current real......" + str(real_temp)
 
-    filename = "/home-tech-local/public_html/temp_2.html"
+    filename = "/home/pi/home-tech-local/public_html/temp_2.html"
     try:
         f_html_temp = open(filename, 'w')
     except IOError as (errno, strerror):
