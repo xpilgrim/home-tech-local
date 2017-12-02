@@ -129,11 +129,11 @@ def write_temp_buffer(conf_sensor_nr, temp):
     real_temp = int(temp) / 1000
     print "temp current real......" + str(real_temp)
 
-    filename = "public_html/temp_2.html"
+    filename = "/home-tech-local/public_html/temp_2.html"
     try:
         f_html_temp = open(filename, 'w')
     except IOError as (errno, strerror):
-        log_message = ("write_to_file_record_params: I/O error({0}): {1}"
+        log_message = ("write_to_file: I/O error({0}): {1}"
                         .format(errno, strerror) + ": " + filename)
         print log_message
     else:
