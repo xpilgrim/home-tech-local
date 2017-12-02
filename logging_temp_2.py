@@ -138,7 +138,7 @@ def write_temp_buffer(conf_sensor_nr, temp):
         print log_message
     else:
         f_html_temp.write("<!DOCTYPE html>\n")
-        f_html_temp.write('html lang="en"\n')
+        f_html_temp.write('<html lang="en">\n')
         f_html_temp.write('<head>\n')
         f_html_temp.write('<meta charset="utf-8">\n')
         f_html_temp.write('<meta http-equiv="X-UA-Compatible" content="IE=edge">\n')
