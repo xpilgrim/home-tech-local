@@ -120,7 +120,7 @@ def send_temp(conf_sensor_nr, temp):
         print e
 
 
-def write_temp_buffer(conf_sensor_nr, temp):
+def write_temp_in_file(conf_sensor_nr, temp, filename):
     """write html file with temp for fhem"""
     if use_temp_buffer is None:
         print "Nothing to do, using buffer disabled..."
@@ -129,7 +129,6 @@ def write_temp_buffer(conf_sensor_nr, temp):
     real_temp = int(temp) / 1000
     print "temp current real......" + str(real_temp)
 
-    filename = "/home/pi/home-tech-local/public_html/temp_2.html"
     try:
         f_html_temp = open(filename, 'w')
     except IOError as (errno, strerror):
@@ -162,7 +161,8 @@ if __name__ == '__main__':
     temp = read_temp(conf_sensor_pfad)
 
     if None != temp:
-        write_temp_buffer(conf_sensor_nr, temp)
+        filename = "/home/pi/home-tech-local/public_html/temp_2.html"
+        write_temp_in_file(conf_sensor_nr, temp, filename)
         temp_last = read_last_temp(conf_sensor_nr)
         #print temp_old.strip()
         #print temp[:2]
