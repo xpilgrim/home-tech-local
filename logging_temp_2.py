@@ -142,7 +142,7 @@ def write_temp_in_file(conf_sensor_nr, temp, filename):
         f_html_temp.write('<meta charset="utf-8">\n')
         f_html_temp.write('<meta http-equiv="X-UA-Compatible" content="IE=edge">\n')
         f_html_temp.write('<meta name="viewport" content="width=device-width, initial-scale=1">\n')
-        f_html_temp.write('<title>Home-Tech local temp_2</title>\n')
+        f_html_temp.write('<title>Home-Tech local</title>\n')
         f_html_temp.write('</head>\n')
         f_html_temp.write('<body>\n')
         f_html_temp.write(str(real_temp))
@@ -164,6 +164,8 @@ if __name__ == '__main__':
         filename = "/home/pi/home-tech-local/public_html/temp_2.html"
         write_temp_in_file(conf_sensor_nr, temp, filename)
         temp_last = read_last_temp(conf_sensor_nr)
+        filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
+        write_temp_in_file(conf_sensor_nr, temp_last, filename)
         #print temp_old.strip()
         #print temp[:2]
         # send only if different value
