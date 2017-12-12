@@ -182,9 +182,9 @@ if __name__ == '__main__':
         write_temp_in_file(conf_sensor_nr, temp, filename)
         temp_last = read_last_temp(conf_sensor_nr)
         filename = "/home/pi/home-tech-local/public_html/temp_2.html"
-        temp_last_1 = read_last_temp_from_file(conf_sensor_nr, filename)
+        temp_last_a = read_last_temp_from_file(conf_sensor_nr, filename)
         filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
-        write_temp_in_file(conf_sensor_nr, temp_last, filename)
+        write_temp_in_file(conf_sensor_nr, temp_last_a, filename)
         #print temp_old.strip()
         #print temp[:2]
         # send only if different value
