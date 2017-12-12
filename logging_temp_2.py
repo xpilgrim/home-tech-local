@@ -120,6 +120,19 @@ def send_temp(conf_sensor_nr, temp):
         print e
 
 
+def read_last_temp_from_file(conf_sensor_nr, filename):
+    """read last registered temp from file"""
+    try:
+        with open(filename) as f:
+            lines = f.readlines()
+    except IOError as (errno, strerror):
+        log_message = ("write_from_file: I/O error({0}): {1}"
+                        .format(errno, strerror) + ": " + filename)
+        print log_message
+
+    print lines
+
+
 def write_temp_in_file(conf_sensor_nr, temp, filename):
     """write html file with temp for fhem"""
     if use_temp_buffer is None:
@@ -164,6 +177,8 @@ if __name__ == '__main__':
         filename = "/home/pi/home-tech-local/public_html/temp_2.html"
         write_temp_in_file(conf_sensor_nr, temp, filename)
         temp_last = read_last_temp(conf_sensor_nr)
+        filename = "/home/pi/home-tech-local/public_html/temp_2.html"
+        temp_last_1 = read_last_temp_from_file(conf_sensor_nr, filename)
         filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
         write_temp_in_file(conf_sensor_nr, temp_last, filename)
         #print temp_old.strip()
