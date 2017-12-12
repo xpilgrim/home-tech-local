@@ -130,6 +130,7 @@ def read_last_temp_from_file(conf_sensor_nr, filename):
                         .format(errno, strerror) + ": " + filename)
         print log_message
 
+    lines = [x.strip() for x in lines]
     print lines
 
 
