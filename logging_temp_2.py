@@ -132,6 +132,8 @@ def read_last_temp_from_file(conf_sensor_nr, filename):
 
     lines = [x.strip() for x in lines]
     print lines
+    pos = lines.index("<body>")
+    print pos
 
 
 def write_temp_in_file(conf_sensor_nr, temp, filename):
