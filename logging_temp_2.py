@@ -176,11 +176,14 @@ if __name__ == '__main__':
         # read and write last temp
         filename = "/home/pi/home-tech-local/public_html/temp_2.html"
         temp_last_a = read_last_temp_from_file(conf_sensor_nr, filename)
-        filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
-        write_temp_in_file(conf_sensor_nr, temp_last_a, filename)
 
-        filename = "/home/pi/home-tech-local/public_html/temp_2.html"
-        write_temp_in_file(conf_sensor_nr, real_temp, filename)
+        # write only if different value
+        if temp_last_a != real_temp:
+            filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
+            write_temp_in_file(conf_sensor_nr, temp_last_a, filename)
+
+            filename = "/home/pi/home-tech-local/public_html/temp_2.html"
+            write_temp_in_file(conf_sensor_nr, real_temp, filename)
 
         # from web db
         temp_last = read_last_temp(conf_sensor_nr)
