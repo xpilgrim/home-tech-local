@@ -178,12 +178,12 @@ if __name__ == '__main__':
         temp_last_a = read_last_temp_from_file(conf_sensor_nr, filename)
         print "temp last from file...." + temp_last_a
         # write only if different value
-        if temp_last_a != real_temp:
+        if temp_last_a != str(real_temp):
             filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
             write_temp_in_file(conf_sensor_nr, temp_last_a, filename)
 
             filename = "/home/pi/home-tech-local/public_html/temp_2.html"
-            write_temp_in_file(conf_sensor_nr, real_temp, filename)
+            write_temp_in_file(conf_sensor_nr, str(real_temp), filename)
         else:
             print "Nothing to write, temp hasn't changed..."
 
