@@ -155,7 +155,7 @@ def write_temp_in_file(conf_sensor_nr, temp, filename):
         f_html_temp.write('<title>Home-Tech local</title>\n')
         f_html_temp.write('</head>\n')
         f_html_temp.write('<body>\n')
-        f_html_temp.write(str(real_temp))
+        f_html_temp.write(temp)
         f_html_temp.write('\n</body>\n')
         f_html_temp.write('</html>\n')
         f_html_temp.close
