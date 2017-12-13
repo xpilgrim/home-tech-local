@@ -184,6 +184,8 @@ if __name__ == '__main__':
 
             filename = "/home/pi/home-tech-local/public_html/temp_2.html"
             write_temp_in_file(conf_sensor_nr, real_temp, filename)
+        else:
+            print "Nothing to write, temp hasn't changed..."
 
         # from web db
         temp_last = read_last_temp(conf_sensor_nr)
@@ -193,5 +195,5 @@ if __name__ == '__main__':
         if temp_last.strip() != temp[:2]:
             send_temp(conf_sensor_nr, temp)
         else:
-            print "Nothing to do, temp hasn't changed..."
+            print "Nothing to send, temp hasn't changed..."
     print "Let's go home"
