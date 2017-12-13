@@ -159,7 +159,7 @@ def write_temp_in_file(conf_sensor_nr, temp, filename):
         f_html_temp.write('\n</body>\n')
         f_html_temp.write('</html>\n')
         f_html_temp.close
-        print "html file written..."
+        print "html file written..." + temp
 
 if __name__ == '__main__':
     print "\nLet's go"
@@ -176,7 +176,7 @@ if __name__ == '__main__':
         # read and write last temp
         filename = "/home/pi/home-tech-local/public_html/temp_2.html"
         temp_last_a = read_last_temp_from_file(conf_sensor_nr, filename)
-        print "temp last from file.." + temp_last_a
+        print "temp last from file...." + temp_last_a
         # write only if different value
         if temp_last_a != real_temp:
             filename = "/home/pi/home-tech-local/public_html/temp_2_last.html"
