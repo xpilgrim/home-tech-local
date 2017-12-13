@@ -170,7 +170,7 @@ if __name__ == '__main__':
     GPIO.setmode(GPIO.BOARD)
     temp = read_temp(conf_sensor_pfad)
 
-    if None != temp:
+    if temp is not None:
         real_temp = int(temp) / 1000
         print "temp current real......" + str(real_temp)
         # read and write last temp
