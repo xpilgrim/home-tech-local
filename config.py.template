@@ -7,7 +7,7 @@
 
 # common config options for home-tech logging
 
-# sensors temprature
+# sensors temperature
 # sensor-id according /sys/bus/w1/devices
 sensor_temp_01_id = ""
 sensor_temp_02_id = ""
@@ -22,6 +22,11 @@ logged_url = ""
 # authentication
 logging_user = ""
 logging_pw = ""
+
+# common config options for xmpp
+xmpp_jid = ""
+xmpp_password = ""
+xmpp_jid_target = ""
 
 
 # common config options for home-tech webcam
