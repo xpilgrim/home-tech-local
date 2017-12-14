@@ -36,6 +36,11 @@ def lets_rock():
     temp = read_last_temp_from_file(filename)
     print "temp from file...." + temp
 
+    # compare
+    if temp < temp_last:
+        if int(temp) < 70 and int(temp) > 65:
+            send_xmpp("Ofen Temp: " + temp)
+
 
 def send_xmpp(xmpp_message):
     """ send_xmpp"""
