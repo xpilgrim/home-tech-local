@@ -39,6 +39,7 @@ def lets_rock():
 
 def send_xmpp(xmpp_message):
     """ send_xmpp"""
+    print "send_xmpp..."
     lib_xmpp.logging.basicConfig(level = lib_xmpp.logging.INFO)
     if sys.version_info.major < 3:
         xmpp_jid = config.xmpp_jid.decode("utf-8")
@@ -51,13 +52,13 @@ def send_xmpp(xmpp_message):
         xmpp_target_jid = config.xmpp_jid_target
         xmpp_message = xmpp_message
 
-    handler = lib_xmpp.MyHandler(JID(xmpp_target_jid), xmpp_message)
+    handler = lib_xmpp.MyHandler(lib_xmpp.JID(xmpp_target_jid), xmpp_message)
     settings = lib_xmpp.XMPPSettings({
                             u"password": xmpp_password,
                             u"starttls": True,
                             u"tls_verify_peer": False,
                         })
-    client = lib_xmpp.Client(JID(xmpp_jid), [handler], settings)
+    client = lib_xmpp.Client(lib_xmpp.JID(xmpp_jid), [handler], settings)
     client.connect()
     client.run()
 
