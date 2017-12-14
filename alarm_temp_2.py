@@ -72,5 +72,5 @@ if __name__ == '__main__':
     print "\nLet's go"
     print strftime("%Y-%m-%d %H:%M:%S", gmtime())
     lets_rock()
-    send_xmpp("test")
+    #send_xmpp("test")
     print "Let's go home"
