@@ -7,6 +7,9 @@ A simple client example.
 The script asks for a sender JID and password, target JID and a message.
 Then, it connects to the sender's server and sends the message to the target
 JID.
+
+Thanx to:
+https://github.com/lilydjwg/pyxmpp2/blob/master/examples/send_message_client.py
 """
 
 import sys
