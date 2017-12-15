@@ -1,13 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# Thanx to:
-# https://github.com/GolemMediaGmbH/OfficeTemperature/blob/master/Raspberry_Pi/Raspberry.py
 
 import sys
 from time import gmtime, strftime
 import config
 import lib_xmpp
 
+CONFIG_MOOD = 2
 
 def read_last_temp_from_file(filename):
     """read last registered temp from file"""
@@ -16,7 +15,7 @@ def read_last_temp_from_file(filename):
             lines = f.readlines()
     except IOError as (errno, strerror):
         log_message = ("write_from_file: I/O error({0}): {1}"
-                        .format(errno, strerror) + ": " + filename)
+                       .format(errno, strerror) + ": " + filename)
         print log_message
 
     lines = [x.strip() for x in lines]
@@ -39,13 +38,15 @@ def lets_rock():
     # compare
     if temp < temp_last:
         if int(temp) < 70 and int(temp) > 65:
-            send_xmpp("Ofen Temp: " + temp)
-
+            if CONFIG_MOOD == 1:
+                send_xmpp("Ofen Temp: " + temp)
+            if CONFIG_MOOD == 2:
+                send_xmpp("Heb Deinen Arsch und leg Holz nach! " + temp)
 
 def send_xmpp(xmpp_message):
     """ send_xmpp"""
     print "send_xmpp..."
-    lib_xmpp.logging.basicConfig(level = lib_xmpp.logging.INFO)
+    lib_xmpp.logging.basicConfig(level=lib_xmpp.logging.INFO)
     if sys.version_info.major < 3:
         xmpp_jid = config.xmpp_jid.decode("utf-8")
         xmpp_password = config.xmpp_password.decode("utf-8")
@@ -62,7 +63,7 @@ def send_xmpp(xmpp_message):
                             u"password": xmpp_password,
                             u"starttls": True,
                             u"tls_verify_peer": False,
-                        })
+                            })
     client = lib_xmpp.Client(lib_xmpp.JID(xmpp_jid), [handler], settings)
     client.connect()
     client.run()
