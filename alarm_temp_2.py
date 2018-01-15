@@ -7,7 +7,6 @@ import random
 import config
 import lib_xmpp
 
-CONFIG_MOOD = 1
 LIST_MOOD = []
 LIST_MOOD.append("Ofen Temp: ")
 LIST_MOOD.append("Heb Deinen Arsch und leg Holz nach! ")
@@ -45,12 +44,6 @@ def lets_rock():
     if temp < temp_last:
         if int(temp) < 70 and int(temp) > 65:
             send_xmpp(random.choice(LIST_MOOD) + temp)
-            #if CONFIG_MOOD == 1:
-            #    send_xmpp("Ofen Temp: " + temp)
-            #if CONFIG_MOOD == 2:
-            #    send_xmpp("Heb Deinen Arsch und leg Holz nach! " + temp)
-            #if CONFIG_MOOD == 3:
-            #    send_xmpp("Na, mein Lieber, willst Du mich nicht mal besuchen? " + temp)
 
 def send_xmpp(xmpp_message):
     """ send_xmpp"""
