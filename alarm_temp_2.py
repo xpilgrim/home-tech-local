@@ -3,6 +3,7 @@
 
 import sys
 from time import gmtime, strftime
+import random
 import config
 import lib_xmpp
 
@@ -11,6 +12,7 @@ LIST_MOOD = []
 LIST_MOOD.append("Ofen Temp: ")
 LIST_MOOD.append("Heb Deinen Arsch und leg Holz nach! ")
 LIST_MOOD.append("Na, mein Lieber, willst Du mich nicht mal besuchen? ")
+LIST_MOOD.append("Sei so nett und leg Holz nach! ")
 
 def read_last_temp_from_file(filename):
     """read last registered temp from file"""
@@ -42,7 +44,7 @@ def lets_rock():
     # compare
     if temp < temp_last:
         if int(temp) < 70 and int(temp) > 65:
-            send_xmpp(LIST_MOOD[CONFIG_MOOD] + temp)
+            send_xmpp(random.choice(LIST_MOOD) + temp)
             #if CONFIG_MOOD == 1:
             #    send_xmpp("Ofen Temp: " + temp)
             #if CONFIG_MOOD == 2:
