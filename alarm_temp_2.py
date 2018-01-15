@@ -6,7 +6,11 @@ from time import gmtime, strftime
 import config
 import lib_xmpp
 
-CONFIG_MOOD = 3
+CONFIG_MOOD = 1
+LIST_MOOD = []
+LIST_MOOD.append("Ofen Temp: ")
+LIST_MOOD.append("Heb Deinen Arsch und leg Holz nach! ")
+LIST_MOOD.append("Na, mein Lieber, willst Du mich nicht mal besuchen? ")
 
 def read_last_temp_from_file(filename):
     """read last registered temp from file"""
@@ -38,12 +42,13 @@ def lets_rock():
     # compare
     if temp < temp_last:
         if int(temp) < 70 and int(temp) > 65:
-            if CONFIG_MOOD == 1:
-                send_xmpp("Ofen Temp: " + temp)
-            if CONFIG_MOOD == 2:
-                send_xmpp("Heb Deinen Arsch und leg Holz nach! " + temp)
-            if CONFIG_MOOD == 3:
-                send_xmpp("Na, mein Lieber, willst Du mich nicht mal besuchen? " + temp)
+            send_xmpp(LIST_MOOD[CONFIG_MOOD] + temp)
+            #if CONFIG_MOOD == 1:
+            #    send_xmpp("Ofen Temp: " + temp)
+            #if CONFIG_MOOD == 2:
+            #    send_xmpp("Heb Deinen Arsch und leg Holz nach! " + temp)
+            #if CONFIG_MOOD == 3:
+            #    send_xmpp("Na, mein Lieber, willst Du mich nicht mal besuchen? " + temp)
 
 def send_xmpp(xmpp_message):
     """ send_xmpp"""
