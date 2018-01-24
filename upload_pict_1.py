@@ -22,15 +22,18 @@ def delete_pict():
     now = time.time()
     old = now - delete_older_than_local * 24 * 60 * 60
 
-    for f in os.listdir(config.pict_path_local_1):
-        if f == ".gitignore":
-            continue
-        path = os.path.join(config.pict_path_local_1, f)
-        if os.path.isfile(path):
-            stat = os.stat(path)
-            if stat.st_ctime < old:
-                print "removing: ", path
-                os.remove(path)
+    try:
+        for f in os.listdir(config.pict_path_local_1):
+            if f == ".gitignore":
+                continue
+            path = os.path.join(config.pict_path_local_1, f)
+            if os.path.isfile(path):
+                stat = os.stat(path)
+                if stat.st_ctime < old:
+                    print "removing: ", path
+                    os.remove(path)
+    except Exception as e:
+        print e
 
 
 def upload_pict():
