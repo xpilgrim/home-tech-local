@@ -32,7 +32,7 @@ xmpp_jid_target = ""
 # common config options for home-tech webcam
 # ssh host and authentication
 ssh_host = ""
-ssh_port = ""
+ssh_port = 
 ssh_user = ""
 ssh_pw = ""
 # paramiko logfile
