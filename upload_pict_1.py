@@ -95,9 +95,11 @@ def delete_picts_remote(picts_remote):
     # 20 days more
     old = now - delete_older_than_remote * 24 * 60 * 60
     print old
-    print "files remote:"
-    print len(picts_remote)
-    #return
+    try:
+        print "files remote:"
+        print len(picts_remote)
+    except Exception as e:
+        print e
 
     try:
         print "deleting remote: ", config.pict_path_remote_1
