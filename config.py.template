@@ -35,8 +35,8 @@ ssh_host = ""
 ssh_port = 
 ssh_user = ""
 ssh_pw = ""
-# paramiko logfile
-ssh_log = ""
+# paramiko logfile, usually in home-tech-local/log
+ssh_log = "home-tech-local/log/paramiko.log"
 
 # special config for home-tech webcam
 pict_path_local_1 = ""
